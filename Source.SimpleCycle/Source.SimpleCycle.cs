@@ -215,9 +215,9 @@ namespace Source.SimpleCycle
                 Id = Guid.Parse("a9440d02-8ca3-4e35-a9a3-88b024cc0e2d"),
                 Author = "mad ninja",
                 Blurb = "Some simple fun effects",
-                CurrentVersion = new ReleaseNumber(1, 2, 0, 0),
+                CurrentVersion = new ReleaseNumber(1, 2, 0, 1),
                 GitHubLink = "https://github.com/SimpleLed/Source.SimpleCycle",
-                IsPublicRelease = true,
+                IsPublicRelease = false,
                 SupportsCustomConfig = false
             };
         }
