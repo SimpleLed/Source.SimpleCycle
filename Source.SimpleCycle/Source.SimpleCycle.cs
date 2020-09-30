@@ -13,7 +13,7 @@ namespace Source.SimpleCycle
 {
     public class SimpleRGBCycleDriver : ISimpleLed
     {
-
+        public event EventHandler DeviceRescanRequired;
         public T GetConfig<T>() where T : SLSConfigData
         {
             //TODO throw new NotImplementedException();
@@ -40,8 +40,8 @@ namespace Source.SimpleCycle
         private SimpleRGBCycleLEDData rgbPropData = new SimpleRGBCycleLEDData
         {
             RInc = 0.005f,
-            GInc = 0.0003f,
-            BInc = 0.0001f,
+            GInc = 0.02f,
+            BInc = 0.0015f,
             R = 0,
             G = 0,
             B = 0
@@ -101,6 +101,7 @@ namespace Source.SimpleCycle
                 tmp.B = tmp.B + tmp.BInc;
 
                 leds[i].Color = new LEDColor((int)(tmp.R * 255), (int)(tmp.G * 255), (int)(tmp.B * 255));
+//                leds[i].Color = new LEDColor(255,0,255);
             }
 
             for (int i = 0; i < LEDCount; i++)
@@ -215,7 +216,7 @@ namespace Source.SimpleCycle
                 Id = Guid.Parse("a9440d02-8ca3-4e35-a9a3-88b024cc0e2d"),
                 Author = "mad ninja",
                 Blurb = "Some simple fun effects",
-                CurrentVersion = new ReleaseNumber(1, 2, 0, 1),
+                CurrentVersion = new ReleaseNumber(1, 2, 0, 2),
                 GitHubLink = "https://github.com/SimpleLed/Source.SimpleCycle",
                 IsPublicRelease = false,
                 SupportsCustomConfig = false
