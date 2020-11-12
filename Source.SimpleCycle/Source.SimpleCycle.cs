@@ -29,6 +29,11 @@ namespace Source.SimpleCycle
             return "Simple Cycle";
         }
 
+        public void InterestedUSBChange(int VID, int PID, bool connected)
+        {
+           
+        }
+
         private const int LEDCount = 32;
         private Timer timer;
         private int currentPos = 0;
@@ -142,10 +147,16 @@ namespace Source.SimpleCycle
         }
 
 
+        public event Events.DeviceChangeEventHandler DeviceAdded;
+        public event Events.DeviceChangeEventHandler DeviceRemoved;
 
         public void Configure(DriverDetails driverDetails)
         {
-
+            var drivers = GetDevices();
+            foreach (ControlDevice controlDevice in drivers)
+            {
+                DeviceAdded?.Invoke(this, new Events.DeviceChangeEventArgs(controlDevice));
+            }
         }
 
         public List<ControlDevice> GetDevices()
